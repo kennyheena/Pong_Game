@@ -8,6 +8,11 @@
 
 import Foundation
 
+// Global Difficulty variable for tracking user selection
+// Setting default difficulty to easy
+var _DIFFICULTY = Difficulty.Easy;
+
+
 public class Difficulty
 {
     static var Easy = 0.4

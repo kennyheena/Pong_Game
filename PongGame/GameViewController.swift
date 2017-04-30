@@ -22,7 +22,6 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 // Present the scene
                 view.presentScene(scene)
-                scene.difficulty = Difficulty.Easy
                 scene.score = [0,0]
             }
             

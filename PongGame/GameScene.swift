@@ -4,7 +4,7 @@
 //
 //  Created by Sandun Heenatigala on 9/4/17.
 //  Updated by Sandun Heenatigala on 23/4/17
-//  Copyright © 2017 Sandun Heenatigala. All rights reserved.
+//  Copyright © 2017 Sandun Heenativara. All rights reserved.
 //
 
 import SpriteKit
@@ -16,9 +16,7 @@ class GameScene: SKScene {
     var paddle1 = SKSpriteNode ()
     var paddle2 = SKSpriteNode ()
     var ball = SKSpriteNode ()
-    public var difficulty = Difficulty.Hard
     public var score = [Int]()
-    
     
     override func didMove(to view: SKView) {
         
@@ -46,7 +44,13 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             
             paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
-            //paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+            
+            //Implementing 2-player mode control
+            
+            if(_MODE == Mode.Multiplayer)
+            {
+                paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+            }
         }
     }
     
@@ -55,7 +59,12 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             
             paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
-            //paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+            
+            //Implementing 2-player mode control
+            if(_MODE == Mode.Multiplayer)
+            {
+                paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+            }
         }
     }
     
@@ -82,7 +91,11 @@ class GameScene: SKScene {
         // Called before each frame is rendered
         
         //paddle2 slider movement when the ball travel (paddle 2 is tracking the ball)
-        paddle2.run(SKAction.moveTo(x: ball.position.x, duration: difficulty))
+        
+        if (_MODE == Mode.SinglePlayer)
+        {
+            paddle2.run(SKAction.moveTo(x: ball.position.x, duration: _DIFFICULTY))
+        }
 
         
         //adding checks for when ball reaches bottom or top

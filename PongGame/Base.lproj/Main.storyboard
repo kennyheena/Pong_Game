@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6X0-fq-iNr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6X0-fq-iNr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="1736.8" y="850.52473763118451"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Modes View Controller-->
         <scene sceneID="SZg-5r-1a6">
             <objects>
-                <viewController id="0Hl-bE-0IT" sceneMemberID="viewController">
+                <viewController id="0Hl-bE-0IT" customClass="GameModesViewController" customModule="PongGame" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K7C-Wz-h9T"/>
                         <viewControllerLayoutGuide type="bottom" id="Yer-KR-rKb"/>
@@ -287,6 +287,7 @@
                                 <rect key="frame" x="160.5" y="260.5" width="53" height="30"/>
                                 <state key="normal" title="1 Player"/>
                                 <connections>
+                                    <action selector="btnSinglePlayer_Click:" destination="0Hl-bE-0IT" eventType="touchUpInside" id="HFs-Cb-zrX"/>
                                     <segue destination="Pza-C9-CVv" kind="showDetail" id="2nV-FI-CSi"/>
                                 </connections>
                             </button>
@@ -299,6 +300,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIZ-Sx-VJ5">
                                 <rect key="frame" x="131" y="382.5" width="112" height="30"/>
                                 <state key="normal" title="Rapid Fire Mode"/>
+                                <connections>
+                                    <action selector="btnRapidFire_Click:" destination="0Hl-bE-0IT" eventType="touchUpInside" id="X8a-sc-yM4"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YcN-Un-zAe">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -316,6 +320,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3H-UC-Mbd">
                                 <rect key="frame" x="159.5" y="318.5" width="55" height="30"/>
                                 <state key="normal" title="2 Player"/>
+                                <connections>
+                                    <action selector="btnMultiplayer_Click:" destination="0Hl-bE-0IT" eventType="touchUpInside" id="Toa-Mn-ENY"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="GkC-u6-azm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -334,15 +342,20 @@
                     <navigationItem key="navigationItem" id="8x4-YC-bfa">
                         <barButtonItem key="backBarButtonItem" title="BACK" id="EbH-xE-zbt"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnMultiplayer" destination="q3H-UC-Mbd" id="N4x-Gv-V0P"/>
+                        <outlet property="btnRapidFire" destination="pIZ-Sx-VJ5" id="ebL-nj-vEw"/>
+                        <outlet property="btnSinglePlayer" destination="TAX-5x-7gE" id="Paw-tM-NyG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfZ-hb-F1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1800.8" y="88.605697151424295"/>
         </scene>
-        <!--View Controller-->
+        <!--Difficult Select Controller-->
         <scene sceneID="3Qe-F9-D3Z">
             <objects>
-                <viewController id="Pza-C9-CVv" sceneMemberID="viewController">
+                <viewController id="Pza-C9-CVv" customClass="DifficultSelectController" customModule="PongGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F4g-Hk-fd5"/>
                         <viewControllerLayoutGuide type="bottom" id="IUb-P7-E1B"/>
@@ -361,16 +374,25 @@
                                 <rect key="frame" x="80" y="264" width="214" height="30"/>
                                 <state key="normal" title="EASY"/>
                                 <connections>
+                                    <action selector="btnEasy_Click:" destination="Pza-C9-CVv" eventType="touchUpInside" id="Dyl-JB-H42"/>
                                     <segue destination="BV1-FR-VrT" kind="show" id="Zsx-eA-P0I"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ol6-jf-jY3">
                                 <rect key="frame" x="80" y="334" width="214" height="30"/>
                                 <state key="normal" title="MEDIUM"/>
+                                <connections>
+                                    <action selector="btnMedium_Click:" destination="Pza-C9-CVv" eventType="touchUpInside" id="fcU-7Q-EZX"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="M9y-26-gcl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWI-eL-ITn">
                                 <rect key="frame" x="80" y="412" width="214" height="30"/>
                                 <state key="normal" title="HARD"/>
+                                <connections>
+                                    <action selector="btnHard_Click:" destination="Pza-C9-CVv" eventType="touchUpInside" id="k1g-zd-Yyt"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="cFy-Bt-xOR"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MKe-Ov-QAS">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -399,6 +421,11 @@
                             <constraint firstItem="gDp-nk-UgR" firstAttribute="centerX" secondItem="u7G-9o-HMd" secondAttribute="centerX" id="qOc-1L-ceo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnEasy" destination="gDp-nk-UgR" id="67C-dB-TTH"/>
+                        <outlet property="btnHard" destination="oWI-eL-ITn" id="ewF-WL-5rX"/>
+                        <outlet property="btnMedium" destination="Ol6-jf-jY3" id="uJk-SU-EAJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8G-gu-cCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -424,7 +451,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mGQ-Bm-R7x"/>
+        <segue reference="GkC-u6-azm"/>
         <segue reference="hnu-A3-4Sc"/>
+        <segue reference="ePJ-Qi-SEL"/>
     </inferredMetricsTieBreakers>
 </document>
