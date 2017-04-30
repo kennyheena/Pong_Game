@@ -3,7 +3,6 @@
 //  PongGame
 //
 //  Created by Sandun Heenatigala on 9/4/17.
-//  Updated by Sandun Heenatigala on 23/4/17
 //  Copyright © 2017 Sandun Heenativara. All rights reserved.
 //
 
@@ -13,10 +12,14 @@ import GameplayKit
 class GameScene: SKScene {
     
     //making three variables for 3 objects (paddle1, paddle2 and ball)
-    var paddle1 = SKSpriteNode ()
-    var paddle2 = SKSpriteNode ()
-    var ball = SKSpriteNode ()
+    public var paddle1 = SKSpriteNode ()
+    public var paddle2 = SKSpriteNode ()
+    public var ball = SKSpriteNode ()
+    
+    //and score
     public var score = [Int]()
+    public var paddle1score = SKLabelNode ()
+    public var paddle2score = SKLabelNode ()
     
     override func didMove(to view: SKView) {
         
@@ -25,8 +28,11 @@ class GameScene: SKScene {
         paddle2 = self.childNode(withName: "paddle2") as! SKSpriteNode
         ball = self.childNode(withName: "ball") as! SKSpriteNode
     
+        //asssigning variables for the score
+        paddle1score = self.childNode(withName: "paddle1score") as! SKLabelNode
+        paddle2score = self.childNode(withName: "paddle2score") as! SKLabelNode
         
-        //ball bounce angle and ball speed
+        //ball bounce angle
         ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -72,8 +78,9 @@ class GameScene: SKScene {
     {
         ball.position = CGPoint(x: 0, y: 0)
         ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        paddle1.position = CGPoint(x: 0 , y: paddle1.position.y)
-        paddle2.position = CGPoint(x: 0 , y: paddle2.position.y)
+        //paddle1.position = CGPoint(x: 0 , y: paddle1.position.y)
+        //commented this out because it causes the reset on paddle's to the middle of the screen and looses control if you are touching it.
+        //paddle2.position = CGPoint(x: 0 , y: paddle2.position.y)
         
         if (winner == paddle1)
         {
