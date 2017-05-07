@@ -3,7 +3,7 @@
 //  PongGame
 //
 //  Created by Sandun Heenatigala on 9/4/17.
-//  Copyright © 2017 Sandun Heenativara. All rights reserved.
+//  Copyright © 2017 Sandun Heenatigala. All rights reserved.
 //
 
 import SpriteKit
@@ -115,37 +115,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func inBounds(touch: UITouch, object: SKNode) -> Bool
-    {
-        let location = touch.location(in: self)
-        
-        let check = ((location.x <= object.frame.maxX) &&
-                    (location.x >= object.frame.minX) &&
-                    (location.y <= object.frame.maxY) &&
-                    (location.y >= object.frame.minY));
-        return check;
-        
-    }
+//    func inBounds(touch: UITouch, object: SKNode) -> Bool
+//    {
+//        let location = touch.location(in: self)
+//        
+//        let check = ((location.x <= object.frame.maxX) &&
+//                    (location.x >= object.frame.minX) &&
+//                    (location.y <= object.frame.maxY) &&
+//                    (location.y >= object.frame.minY));
+//        return check;
+//        
+//    }
     
+    
+ //adding touch functionality
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
             let location = touch.location(in: self)
             
-            if(inBounds(touch: touch, object: paddle1))
-            {
-                paddle1.run(SKAction.moveTo(x: location.x , duration: 0))
+     //adding 2 player touch mode. when you touch top half of the screen it moves paddle2 and when you touch bottom half of the screen it moves paddle 1
+            if(_MODE == Mode.Multiplayer){
+            
+            if location.y > 0 {
+                paddle2.run(SKAction.moveTo(x: location.x , duration: 0.1))
             }
+            
+            if location.y < 0 {
+                self.paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+            }
+            
+            }
+            else {
+                paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+            }
+            
+//            if(inBounds(touch: touch, object: paddle1))
+//            {
+//                paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+//            }
             
             //Implementing 2-player mode control
             
-            if(_MODE == Mode.Multiplayer)
-            {
-                if(inBounds(touch: touch,object: paddle2))
-                {
-                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0))
-                }
-            }
+//            if(_MODE == Mode.Multiplayer)
+//            {
+//                if(inBounds(touch: touch,object: paddle2))
+//                {
+//                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+//                }
+//            }
         }
     }
     
@@ -153,20 +171,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            if(inBounds(touch: touch, object: paddle1))
-            {
-                paddle1.run(SKAction.moveTo(x: location.x , duration: 0))
+            
+            
+            if(_MODE == Mode.Multiplayer){
+                
+                if location.y > 0 {
+                    paddle2.run(SKAction.moveTo(x: location.x , duration: 0.1))
+                }
+                
+                if  location.y < 0 {
+                    self.paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+                }
+                
+                }
+                
+            else {
+                paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
             }
+            
+//            if(inBounds(touch: touch, object: paddle1))
+//            {
+//                paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+//            }
             
             //Implementing 2-player mode control
             
-            if(_MODE == Mode.Multiplayer)
-            {
-                if(inBounds(touch: touch,object: paddle2))
-                {
-                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0))
-                }
-            }
+//            if(_MODE == Mode.Multiplayer)
+//            {
+//                if(inBounds(touch: touch,object: paddle2))
+//                {
+//                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+//                }
+//            }
         }
     }
     
@@ -204,6 +240,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
+//        switch CurrentGameType {
+//        case Mode.Multiplayer:
+//             break
+//        }
+//        
         //paddle2 slider movement when the ball travel (paddle 2 is tracking the ball)
         
         if (_MODE != Mode.Multiplayer)
@@ -230,6 +271,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             //TODO: Implement code when player loses rapid fire
             addScore(winner: paddle1);
+            //this must be when the padlle 1 loose 3 times then the final score must appear. so he is able to bat the ball 3 times till the game over and then finalise the scores.
         }
 
     }

@@ -10,4 +10,8 @@ import Foundation
 
 var _MODE = Mode.SinglePlayer;
 
-enum Mode : Int {case SinglePlayer, Multiplayer, RapidFire};
+enum Mode {
+    case SinglePlayer
+    case Multiplayer
+    case RapidFire
+}
