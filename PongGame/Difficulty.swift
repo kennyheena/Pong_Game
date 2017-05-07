@@ -15,7 +15,7 @@ var _DIFFICULTY = Difficulty.Easy;
 
 public class Difficulty
 {
-    static var Easy = 0.4
+    static var Easy = 0.3
     static var Medium = 0.2
     static var Hard = 0.1
     
