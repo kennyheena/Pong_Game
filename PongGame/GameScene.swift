@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //making three variables for 3 objects (paddle1, paddle2 and ball)
     public var paddle1 = SKSpriteNode ()
@@ -20,6 +20,21 @@ class GameScene: SKScene {
     public var score = [Int]()
     public var paddle1score = SKLabelNode ()
     public var paddle2score = SKLabelNode ()
+    public var multiplier = 1;
+    public var baseScore = 0;
+    public var difficultyMultiplier = 0;
+    public var velocityIncrease = 1.05
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if (contact.bodyA.node == paddle1 && contact.bodyB.node == ball)
+        {
+            collisionBetween(object0: contact.bodyB.node!, object1: contact.bodyA.node!)
+        }
+        else if (contact.bodyB.node == ball && contact.bodyA.node == paddle1)
+        {
+            collisionBetween(object0: contact.bodyB.node!, object1: contact.bodyA.node!)
+        }
+    }
     
     override func didMove(to view: SKView) {
         
@@ -32,6 +47,33 @@ class GameScene: SKScene {
         paddle1score = self.childNode(withName: "paddle1score") as! SKLabelNode
         paddle2score = self.childNode(withName: "paddle2score") as! SKLabelNode
         
+        //setting label values for scores
+        if(_MODE == Mode.RapidFire)
+        {
+            paddle1score.text = String(0)
+            paddle2score.text = String(multiplier) + "x"
+        }
+        else
+        {
+            paddle1score.text = String(0)
+            paddle2score.text = String(0)
+        }
+        
+        //setting difficulty multipler
+        switch _DIFFICULTY {
+        case Difficulty.Easy:
+            difficultyMultiplier = 1;
+            break;
+        case Difficulty.Medium:
+            difficultyMultiplier = 2;
+            break;
+        case Difficulty.Hard:
+            difficultyMultiplier = 3;
+            break;
+        default:
+            difficultyMultiplier = 1;
+        }
+        
         //ball bounce angle
         ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
         
@@ -41,6 +83,47 @@ class GameScene: SKScene {
         border.restitution = 1
         self.physicsBody = border
 
+        // setting physics information for handling collision - required for RapidFireScoring mode
+        physicsWorld.contactDelegate = self
+        ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+    }
+    
+    //called when the ball collides with an object
+    func collisionBetween(object0: SKNode, object1: SKNode) {
+        //Checking if RapidFire more is enabled
+        if(_MODE == Mode.RapidFire)
+        {
+            //Checking the colliding object is player 1 paddle
+            if(object1 == paddle1)
+            {
+                //incrementing multiplier
+                multiplier = multiplier + 1;
+                //Updating Multiplier field
+                paddle2score.text = String(multiplier) + "x"
+                baseScore = baseScore + 1
+                
+                //Increasing score - only using player 1 score
+                score[0] = baseScore * multiplier * difficultyMultiplier;
+                
+                //setting text for score
+                paddle1score.text = String(score[0])
+                
+                //increasing the speed of the ball each time it collides with the player one paddle
+                ball.physicsBody?.velocity.dx = (ball.physicsBody?.velocity.dx)! * 1.05
+                ball.physicsBody?.velocity.dy = (ball.physicsBody?.velocity.dy)! * 1.05
+            }
+        }
+    }
+    
+    func inBounds(touch: UITouch, object: SKNode) -> Bool
+    {
+        let location = touch.location(in: self)
+        
+        let check = ((location.x <= object.frame.maxX) &&
+                    (location.x >= object.frame.minX) &&
+                    (location.y <= object.frame.maxY) &&
+                    (location.y >= object.frame.minY));
+        return check;
         
     }
     
@@ -49,13 +132,19 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             
-            paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+            if(inBounds(touch: touch, object: paddle1))
+            {
+                paddle1.run(SKAction.moveTo(x: location.x , duration: 0))
+            }
             
             //Implementing 2-player mode control
             
             if(_MODE == Mode.Multiplayer)
             {
-                paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+                if(inBounds(touch: touch,object: paddle2))
+                {
+                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0))
+                }
             }
         }
     }
@@ -64,12 +153,19 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             
-            paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
+            if(inBounds(touch: touch, object: paddle1))
+            {
+                paddle1.run(SKAction.moveTo(x: location.x , duration: 0))
+            }
             
             //Implementing 2-player mode control
+            
             if(_MODE == Mode.Multiplayer)
             {
-                paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
+                if(inBounds(touch: touch,object: paddle2))
+                {
+                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0))
+                }
             }
         }
     }
@@ -82,6 +178,8 @@ class GameScene: SKScene {
         //commented this out because it causes the reset on paddle's to the middle of the screen and looses control if you are touching it.
         //paddle2.position = CGPoint(x: 0 , y: paddle2.position.y)
         
+        if(_MODE != Mode.RapidFire)
+        {
         if (winner == paddle1)
         {
             score[0] += 1
@@ -92,6 +190,15 @@ class GameScene: SKScene {
             score[1] += 1
             ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
         }
+        }
+        // resetting ball if enemy loses
+        else
+        {
+            if (winner == paddle1)
+            {
+                ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -99,12 +206,14 @@ class GameScene: SKScene {
         
         //paddle2 slider movement when the ball travel (paddle 2 is tracking the ball)
         
-        if (_MODE == Mode.SinglePlayer)
+        if (_MODE != Mode.Multiplayer)
         {
             paddle2.run(SKAction.moveTo(x: ball.position.x, duration: _DIFFICULTY))
         }
 
-        
+        // Rapid Fire must be treated differently due to scoring
+        if(_MODE != Mode.RapidFire)
+        {
         //adding checks for when ball reaches bottom or top
         if (ball.position.y <= paddle1.position.y - 50)
         {
@@ -114,5 +223,14 @@ class GameScene: SKScene {
         {
             addScore(winner: paddle1)
         }
+        }
+        
+        //Implementing rapid fire mode code
+        if (ball.position.y >= paddle2.position.y + 50 && _MODE == Mode.RapidFire)
+        {
+            //TODO: Implement code when player loses rapid fire
+            addScore(winner: paddle1);
+        }
+
     }
 }

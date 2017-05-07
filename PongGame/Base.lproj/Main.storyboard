@@ -302,6 +302,7 @@
                                 <state key="normal" title="Rapid Fire Mode"/>
                                 <connections>
                                     <action selector="btnRapidFire_Click:" destination="0Hl-bE-0IT" eventType="touchUpInside" id="X8a-sc-yM4"/>
+                                    <segue destination="Pza-C9-CVv" kind="show" id="TuX-y8-8Wc"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YcN-Un-zAe">
@@ -451,8 +452,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GkC-u6-azm"/>
         <segue reference="hnu-A3-4Sc"/>
+        <segue reference="2nV-FI-CSi"/>
         <segue reference="ePJ-Qi-SEL"/>
+        <segue reference="GkC-u6-azm"/>
     </inferredMetricsTieBreakers>
 </document>
