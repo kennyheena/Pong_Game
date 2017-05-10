@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var baseScore = 0;
     public var difficultyMultiplier = 0;
     public var velocityIncrease = 1.05
+    public var playerMisses = 0
     
     func didBegin(_ contact: SKPhysicsContact) {
         if (contact.bodyA.node == paddle1 && contact.bodyB.node == ball)
@@ -37,6 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
+        _ENDGAME = false
         
         //assigning variables for the sprites
         paddle1 = self.childNode(withName: "paddle1") as! SKSpriteNode
@@ -171,8 +174,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-            
-            
             if(_MODE == Mode.Multiplayer){
                 
                 if location.y > 0 {
@@ -230,10 +231,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // resetting ball if enemy loses
         else
         {
-            if (winner == paddle1)
-            {
                 ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
-            }
+        }
+        
+        if(_MODE == Mode.RapidFire && winner == paddle2 && playerMisses == 4)
+        {
+            // Condition when rapid fire mode has been lost
+            //Setting score
+            score[0] = baseScore * multiplier * difficultyMultiplier;
+            
+            // setting global for score
+            _SCORE = score[0]
+            
+            _ENDGAME = true
+            //self.view?.window?.rootViewController?.present((GameModesViewController as? UIViewController)!, animated: true, completion: nil)
+            self.view?.window?.rootViewController?.presentViewController(GameModesViewController as UIViewController, animated: true, completion: nil)
         }
     }
     
@@ -271,7 +283,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             //TODO: Implement code when player loses rapid fire
             addScore(winner: paddle1);
+            //Implemented below using playerMisses variable
             //this must be when the padlle 1 loose 3 times then the final score must appear. so he is able to bat the ball 3 times till the game over and then finalise the scores.
+        }
+        
+        if (ball.position.y <= paddle1.position.y - 50 && _MODE == Mode.RapidFire)
+        {
+            playerMisses = playerMisses + 1
+            addScore(winner: paddle2);
         }
 
     }

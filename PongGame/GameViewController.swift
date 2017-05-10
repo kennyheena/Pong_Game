@@ -11,23 +11,22 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = GameScene(fileNamed: "GameScene") {
+            if  let scene = GameScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit any size of screens in the ios device lineup
                 //.fill is used here as reference the given link would help
                 //http://stackoverflow.com/questions/33968046/sprite-kit-scene-editor-gamescene-sks-scene-width-and-height
                 scene.scaleMode = .fill
                 // Present the scene
-                view.presentScene(scene)
                 scene.score = [0,0]
+                view.presentScene(scene)
+                
             }
-            
-
             
             view.ignoresSiblingOrder = true
             
@@ -35,9 +34,10 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-
+    
+    
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

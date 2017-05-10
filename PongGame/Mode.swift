@@ -8,8 +8,6 @@
 
 import Foundation
 
-var _MODE = Mode.SinglePlayer;
-
 enum Mode {
     case SinglePlayer
     case Multiplayer
