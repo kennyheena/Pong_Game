@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .fill
                 // Present the scene
                 scene.score = [0,0]
+                scene.viewController = self
                 view.presentScene(scene)
                 
             }

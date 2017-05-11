@@ -12,6 +12,7 @@
 		2BBACE4B1EB595FF00C94D1E /* GameModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBACE4A1EB595FF00C94D1E /* GameModesViewController.swift */; };
 		2BFD13FE1EAC69D200B0AB2C /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD13FD1EAC69D200B0AB2C /* Difficulty.swift */; };
 		2BFE3C221EC31C56005DA4CD /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE3C211EC31C56005DA4CD /* Globals.swift */; };
+		2BFE3C241EC472EE005DA4CD /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFE3C231EC472EC005DA4CD /* Score.swift */; };
 		B9BBDFD41E99EAA3008A4DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BBDFD31E99EAA3008A4DA2 /* AppDelegate.swift */; };
 		B9BBDFD61E99EAA3008A4DA2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B9BBDFD51E99EAA3008A4DA2 /* GameScene.sks */; };
 		B9BBDFD81E99EAA3008A4DA2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B9BBDFD71E99EAA3008A4DA2 /* Actions.sks */; };
@@ -47,6 +48,7 @@
 		2BBACE4A1EB595FF00C94D1E /* GameModesViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; path = GameModesViewController.swift; sourceTree = "<group>"; };
 		2BFD13FD1EAC69D200B0AB2C /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		2BFE3C211EC31C56005DA4CD /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		2BFE3C231EC472EC005DA4CD /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B9BBDFD01E99EAA3008A4DA2 /* PongGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PongGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BBDFD31E99EAA3008A4DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9BBDFD51E99EAA3008A4DA2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				2BBACE481EB5941700C94D1E /* Mode.swift */,
 				2BBACE4A1EB595FF00C94D1E /* GameModesViewController.swift */,
 				2BFE3C211EC31C56005DA4CD /* Globals.swift */,
+				2BFE3C231EC472EC005DA4CD /* Score.swift */,
 			);
 			path = PongGame;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				2BFE3C221EC31C56005DA4CD /* Globals.swift in Sources */,
 				2BFD13FE1EAC69D200B0AB2C /* Difficulty.swift in Sources */,
 				B9BBDFD41E99EAA3008A4DA2 /* AppDelegate.swift in Sources */,
+				2BFE3C241EC472EE005DA4CD /* Score.swift in Sources */,
 				2BBACE471EB5891E00C94D1E /* DifficultySelect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

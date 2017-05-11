@@ -15,7 +15,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var paddle1 = SKSpriteNode ()
     public var paddle2 = SKSpriteNode ()
     public var ball = SKSpriteNode ()
-    
+
+    var viewController: UIViewController?
     //and score
     public var score = [Int]()
     public var paddle1score = SKLabelNode ()
@@ -243,9 +244,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // setting global for score
             _SCORE = score[0]
             
-            _ENDGAME = true
-            //self.view?.window?.rootViewController?.present((GameModesViewController as? UIViewController)!, animated: true, completion: nil)
-            self.view?.window?.rootViewController?.presentViewController(GameModesViewController as UIViewController, animated: true, completion: nil)
+            _ENDGAME = true;
+            viewController?.performSegue(withIdentifier: "leaveGame", sender: nil);
         }
     }
     
