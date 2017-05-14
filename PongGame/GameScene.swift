@@ -227,7 +227,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             score[1] += 1
             ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
+
         }
+            paddle2score.text = String(score[1])
+            paddle1score.text = String(score[0])
         }
         // resetting ball if enemy loses
         else
