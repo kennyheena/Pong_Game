@@ -36,6 +36,83 @@ class GameViewController: UIViewController {
         }
     }
     
+    //function for game over - due to global variables can take
+    public func gameOver(gameScene : GameScene, winner : SKNode)
+    {
+        //message local variable for showing information
+        var message = ""
+        
+        //Rapid fire mode
+        if(_MODE == Mode.RapidFire)
+        {
+            message = "Score: " + String(_SCORE) + " points"
+        }
+        //If single player or multiplayer mode
+        else
+        {
+            if(_MODE == Mode.SinglePlayer)
+            {
+                if(winner == gameScene.paddle1)
+                {
+                    message = "Winner!!"
+                }
+                else
+                {
+                    message = "You Lose!!"
+                }
+            }
+            else
+            {
+                if(winner == gameScene.paddle1)
+                {
+                    message = "Player 1 Wins"
+                }
+                else
+                {
+                    message = "Player 2 Wins"
+                }
+            }
+        }
+        
+        //Showing message
+        
+        //presenting alert
+        let alert = UIAlertController(title: "Game Over", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // User resumes game
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
+            self.performSegue(withIdentifier: "leaveGame", sender: nil);
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Restart", style: .default, handler: { (action: UIAlertAction!) in
+            gameScene.removeFromParent()
+            
+            if let view = self.view as! SKView? {
+                // Load the SKScene from 'GameScene.sks'
+                if  let scene = GameScene(fileNamed: "GameScene") {
+                    // Set the scale mode to scale to fit any size of screens in the ios device lineup
+                    //.fill is used here as reference the given link would help
+                    //http://stackoverflow.com/questions/33968046/sprite-kit-scene-editor-gamescene-sks-scene-width-and-height
+                    scene.scaleMode = .fill
+                    // Present the scene
+                    scene.score = [0,0]
+                    scene.viewController = self
+                    view.presentScene(scene)
+                    
+                }
+                
+                view.ignoresSiblingOrder = true
+                
+                view.showsFPS = true
+                view.showsNodeCount = true
+            }
+        }))
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+
     // function called when game is paused
     public func gamePaused(gameScene : GameScene)
     {

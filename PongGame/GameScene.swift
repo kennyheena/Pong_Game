@@ -25,7 +25,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var paddle1score = SKLabelNode ()
     public var paddle2score = SKLabelNode ()
     public var multiplier = 1;
-    public var baseScore = 0;
     public var difficultyMultiplier = 0;
     public var velocityIncrease = 1.05
     public var playerMisses = 0
@@ -106,14 +105,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //Checking the colliding object is player 1 paddle
             if(object1 == paddle1)
             {
-                //incrementing multiplier
-                multiplier = multiplier + 1;
+
                 //Updating Multiplier field
                 paddle2score.text = String(multiplier) + "x"
-                baseScore = baseScore + 1
                 
                 //Increasing score - only using player 1 score
-                score[0] = baseScore * multiplier * difficultyMultiplier;
+                score[0] = score[0] + (multiplier * difficultyMultiplier);
+                
+                //incrementing multiplier
+                multiplier = multiplier + 1;
                 
                 //setting text for score
                 paddle1score.text = String(score[0])
@@ -238,17 +238,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
         }
         
+        // end condition for rapid fire mode
         if(_MODE == Mode.RapidFire && winner == paddle2 && playerMisses == 4)
         {
-            // Condition when rapid fire mode has been lost
-            //Setting score
-            score[0] = baseScore * multiplier * difficultyMultiplier;
+            self.isPaused = true
+            
             
             // setting global for score
             _SCORE = score[0]
             
             _ENDGAME = true;
-            viewController?.performSegue(withIdentifier: "leaveGame", sender: nil);
+            viewController?.gameOver(gameScene: self, winner: paddle1)
+        }
+        
+        //end condition for regular modes
+        if(_MODE == Mode.SinglePlayer || _MODE == Mode.Multiplayer)
+        {
+            // player 1 wins
+            if(score[0] == 11)
+            {
+                self.isPaused = true
+                viewController?.gameOver(gameScene: self, winner: paddle1)
+                
+            }
+            //player 1 loses
+            else if(score[1] == 11)
+            {
+                self.isPaused = true
+                viewController?.gameOver(gameScene: self, winner: paddle2)
+            }
         }
     }
     
@@ -294,6 +312,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             playerMisses = playerMisses + 1
             multiplier = 1
+            paddle2score.text = String(multiplier) + "x"
+            
+            // checks win condition
             addScore(winner: paddle2);
         }
 
