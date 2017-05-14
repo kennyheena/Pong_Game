@@ -414,7 +414,7 @@ Also, the ball moves faster every time you hit it.</mutableString>
                                 <state key="normal" title="HARD"/>
                                 <connections>
                                     <action selector="btnHard_Click:" destination="Pza-C9-CVv" eventType="touchUpInside" id="k1g-zd-Yyt"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="cFy-Bt-xOR"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="HardGame" id="cFy-Bt-xOR"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="MKe-Ov-QAS">
@@ -487,7 +487,7 @@ Also, the ball moves faster every time you hit it.</mutableString>
     <inferredMetricsTieBreakers>
         <segue reference="cFy-Bt-xOR"/>
         <segue reference="TuX-y8-8Wc"/>
-        <segue reference="hnu-A3-4Sc"/>
-        <segue reference="1HB-qv-WO6"/>
+        <segue reference="JbA-xC-ZQB"/>
+        <segue reference="0Dq-Y8-ryy"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,7 +16,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var paddle2 = SKSpriteNode ()
     public var ball = SKSpriteNode ()
 
-    var viewController: UIViewController?
+    //button for pausing game
+    public var btnPause = SKLabelNode ()
+    
+    var viewController: GameViewController?
     //and score
     public var score = [Int]()
     public var paddle1score = SKLabelNode ()
@@ -41,6 +44,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         _ENDGAME = false
+        
+        //assigning button
+        btnPause = self.childNode(withName: "btnPause") as! SKLabelNode
         
         //assigning variables for the sprites
         paddle1 = self.childNode(withName: "paddle1") as! SKSpriteNode
@@ -119,18 +125,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-//    func inBounds(touch: UITouch, object: SKNode) -> Bool
-//    {
-//        let location = touch.location(in: self)
-//        
-//        let check = ((location.x <= object.frame.maxX) &&
-//                    (location.x >= object.frame.minX) &&
-//                    (location.y <= object.frame.maxY) &&
-//                    (location.y >= object.frame.minY));
-//        return check;
-//        
-//    }
-    
+    func inBounds(touch: UITouch, object: SKLabelNode) -> Bool
+    {
+        let location = touch.location(in: self)
+        
+        let check = ((location.x <= object.frame.maxX) &&
+                    (location.x >= object.frame.minX) &&
+                    (location.y <= object.frame.maxY) &&
+                    (location.y >= object.frame.minY));
+        return check;
+        
+    }
+   
     
  //adding touch functionality
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -153,21 +159,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else {
                 paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
             }
-            
-//            if(inBounds(touch: touch, object: paddle1))
-//            {
-//                paddle1.run(SKAction.moveTo(x: location.x , duration: 0.1))
-//            }
-            
-            //Implementing 2-player mode control
-            
-//            if(_MODE == Mode.Multiplayer)
-//            {
-//                if(inBounds(touch: touch,object: paddle2))
-//                {
-//                    paddle2.run(SKAction.moveTo(x: location.y , duration: 0.1))
-//                }
-//            }
+
+            //checking if user pressed button
+            if (inBounds(touch: touch, object: btnPause))
+            {
+                //touch within label - return control to parent ViewController
+                self.isPaused = true
+                viewController?.gamePaused(gameScene: self)
+            }
+
         }
     }
     
