@@ -290,6 +290,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (ball.position.y <= paddle1.position.y - 50 && _MODE == Mode.RapidFire)
         {
             playerMisses = playerMisses + 1
+            multiplier = 1
             addScore(winner: paddle2);
         }
 
