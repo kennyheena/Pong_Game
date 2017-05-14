@@ -226,14 +226,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="INSTRUCTIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4b-MR-5gK">
-                                <rect key="frame" x="53" y="132" width="269" height="74"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSTRUCTIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4b-MR-5gK">
+                                <rect key="frame" x="53" y="102" width="269" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="bTH-6v-PFd">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="bTH-6v-PFd">
+                                <rect key="frame" x="0.0" y="28" width="355" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xLE-As-Mv9"/>
                                 </constraints>
@@ -247,29 +247,43 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="This includes all the game mode instructions and how to play" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NB3-Og-wr8">
-                                <rect key="frame" x="16" y="230" width="343" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PLr-sg-K4c"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOR-0N-NZd">
+                                <rect key="frame" x="6" y="157" width="343" height="500"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <string key="text">Welcome to Pong!
+Thera are three modes for this pong game, each will be covered below.
+
+How to Play
+It’s simple, you put your finger on the paddle and move it left and right to hit the ball at your opponent.  That’s it.
+
+1-Player
+Battle against the computer in a first to 11 battle.  Select from one of three difficulties.
+A point is scored when the ball is missed and moves past the paddle
+
+2-Player
+Same rules as 1-Player, except you can go up against a friend, each person moves their own paddle until one person has a score of 11.
+
+Rapid Fire
+This is the score based system, each time you hit the ball you get points and the multiplier increases, if you miss your multiple gets reset to 0.
+Miss the ball 4 times and the game is over.
+Also, the ball moves faster every time you hit it.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="F4b-MR-5gK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bjo-u1-VhS" secondAttribute="bottom" constant="30" id="7uu-Ja-6lW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NB3-Og-wr8" secondAttribute="trailing" id="9LX-5j-CaA"/>
+                            <constraint firstItem="2c3-Pa-wzE" firstAttribute="top" secondItem="HOR-0N-NZd" secondAttribute="bottom" constant="10" id="4l1-Xo-RNE"/>
                             <constraint firstItem="F4b-MR-5gK" firstAttribute="centerX" secondItem="Da6-k4-tku" secondAttribute="centerX" id="DWA-2R-aMs"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="NB3-Og-wr8" secondAttribute="leading" id="Eg6-Xd-PXl"/>
-                            <constraint firstItem="2c3-Pa-wzE" firstAttribute="top" relation="lessThanOrEqual" secondItem="NB3-Og-wr8" secondAttribute="bottom" constant="407" id="V5U-Dy-ppc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HOR-0N-NZd" secondAttribute="leading" constant="10" id="Rfo-Lb-Qg1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HOR-0N-NZd" secondAttribute="trailing" constant="10" id="UYK-ii-UPf"/>
                             <constraint firstItem="bTH-6v-PFd" firstAttribute="leading" secondItem="Da6-k4-tku" secondAttribute="leading" id="Wuy-fD-0ba"/>
                             <constraint firstItem="bTH-6v-PFd" firstAttribute="top" secondItem="bjo-u1-VhS" secondAttribute="bottom" constant="8" id="ZZq-Hy-fGh"/>
-                            <constraint firstItem="NB3-Og-wr8" firstAttribute="centerX" secondItem="Da6-k4-tku" secondAttribute="centerX" id="d1f-Jm-6V3"/>
-                            <constraint firstItem="NB3-Og-wr8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="F4b-MR-5gK" secondAttribute="bottom" constant="10" id="jnb-bK-AJh"/>
-                            <constraint firstItem="NB3-Og-wr8" firstAttribute="centerX" secondItem="bTH-6v-PFd" secondAttribute="centerX" id="vN7-EJ-fBZ"/>
+                            <constraint firstItem="HOR-0N-NZd" firstAttribute="top" secondItem="F4b-MR-5gK" secondAttribute="bottom" constant="10" id="esp-V8-agu"/>
+                            <constraint firstItem="HOR-0N-NZd" firstAttribute="centerX" secondItem="Da6-k4-tku" secondAttribute="centerX" id="gEl-w3-k4j"/>
+                            <constraint firstItem="F4b-MR-5gK" firstAttribute="top" secondItem="bTH-6v-PFd" secondAttribute="bottom" constant="30" id="tYA-mb-EI6"/>
                             <constraint firstItem="F4b-MR-5gK" firstAttribute="leading" secondItem="Da6-k4-tku" secondAttribute="leadingMargin" constant="37" id="x6L-2n-5Gy"/>
                         </constraints>
                     </view>
@@ -471,9 +485,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JbA-xC-ZQB"/>
-        <segue reference="GkC-u6-azm"/>
-        <segue reference="2nV-FI-CSi"/>
-        <segue reference="0Dq-Y8-ryy"/>
+        <segue reference="cFy-Bt-xOR"/>
+        <segue reference="TuX-y8-8Wc"/>
+        <segue reference="hnu-A3-4Sc"/>
+        <segue reference="mGQ-Bm-R7x"/>
     </inferredMetricsTieBreakers>
 </document>
