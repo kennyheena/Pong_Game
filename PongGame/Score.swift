@@ -23,10 +23,8 @@ class Score: NSObject, NSCoding
         Name = String(name)
     }
     
-    init(score: Int, name : String)
+    override init()
     {
-        Score = score
-        Name = name
     }
     
     public func Save()
@@ -55,7 +53,8 @@ class Score: NSObject, NSCoding
     required convenience init(coder aDecoder: NSCoder) {
         let score = aDecoder.decodeInteger(forKey: "Score")
         let name = aDecoder.decodeObject(forKey: "Name") as! String
-        self.init(score: score, name: name)
+        self.init()
+        self.setScore(score: score, name: name)
     }
     
     func encode(with aCoder: NSCoder) {

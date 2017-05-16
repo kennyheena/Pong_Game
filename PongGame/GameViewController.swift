@@ -91,9 +91,10 @@ class GameViewController: UIViewController {
 
                 
                 // Creating and adding score
-                let value = String(describing: alert?.textFields![0])
+                let textField = (alert?.textFields![0])! as UITextField
+                let value = textField.text!
                 //Getting the name value from the scores
-                let score = Score(score: _SCORE, name: value);
+                let score = Score();
                 score.setScore(score: _SCORE, name: value)
                 score.Save()
                 

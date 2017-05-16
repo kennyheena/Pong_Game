@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="983.20000000000005" y="88.605697151424295"/>
         </scene>
-        <!--View Controller-->
+        <!--High Scores View Controller-->
         <scene sceneID="8GJ-Fj-Hwf">
             <objects>
-                <viewController id="rOG-8Y-mMM" sceneMemberID="viewController">
+                <viewController id="rOG-8Y-mMM" customClass="HighScoresViewController" customModule="PongGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hKi-yM-efo"/>
                         <viewControllerLayoutGuide type="bottom" id="twW-8S-Xta"/>
@@ -112,16 +112,38 @@
                                 <rect key="frame" x="253" y="594" width="87" height="30"/>
                                 <state key="normal" title="Score Reset "/>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRq-K2-j2y">
+                                <rect key="frame" x="16" y="186" width="343" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="highScoreCell" id="7cL-e4-vaj">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7cL-e4-vaj" id="e90-zo-rK1">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eRq-K2-j2y" firstAttribute="centerX" secondItem="uZl-Cv-duR" secondAttribute="centerX" id="KSZ-gm-DZj"/>
                             <constraint firstItem="twW-8S-Xta" firstAttribute="top" secondItem="Qbu-vo-5Pe" secondAttribute="bottom" constant="43" id="SDM-vL-6ug"/>
+                            <constraint firstItem="Qbu-vo-5Pe" firstAttribute="top" secondItem="eRq-K2-j2y" secondAttribute="bottom" constant="8" id="YXZ-Tf-bvZ"/>
                             <constraint firstItem="IVV-jd-aNz" firstAttribute="centerX" secondItem="uZl-Cv-duR" secondAttribute="centerX" id="Yy5-gH-W8w"/>
+                            <constraint firstItem="eRq-K2-j2y" firstAttribute="top" secondItem="IVV-jd-aNz" secondAttribute="bottom" constant="8.5" id="av3-X7-ani"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eRq-K2-j2y" secondAttribute="trailing" id="cyX-sY-fMG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qbu-vo-5Pe" secondAttribute="trailing" constant="19" id="hfh-8X-hLD"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="eRq-K2-j2y" secondAttribute="leading" id="oy3-m1-6hF"/>
                             <constraint firstItem="IVV-jd-aNz" firstAttribute="top" secondItem="hKi-yM-efo" secondAttribute="bottom" constant="113" id="zfi-fR-Ffr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="eRq-K2-j2y" id="EAt-tl-FeB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emb-4y-pAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -467,7 +489,7 @@ Also, the ball moves faster every time you hit it.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rU-H6-wYW">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rU-H6-wYW">
                                 <rect key="frame" x="16" y="629" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -475,7 +497,7 @@ Also, the ball moves faster every time you hit it.</string>
                                     <segue destination="0Hl-bE-0IT" kind="show" identifier="leaveGame" id="JbA-xC-ZQB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1K-q9-j4i">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1K-q9-j4i">
                                 <rect key="frame" x="313" y="629" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
