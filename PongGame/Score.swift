@@ -61,4 +61,19 @@ class Score: NSObject, NSCoding
         aCoder.encode(Score, forKey: "Score")
         aCoder.encode(Name, forKey: "Name")
     }
+    
+    func removeAll()
+    {
+        //removing all items from scores
+        _SCORES.removeAll()
+        
+        
+        // Saving new empty list
+        let userDefaults = UserDefaults.standard
+        
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: _SCORES)
+        userDefaults.set(encodedData, forKey: Key)
+        userDefaults.synchronize()
+    }
+
 }

@@ -111,6 +111,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbu-vo-5Pe">
                                 <rect key="frame" x="253" y="594" width="87" height="30"/>
                                 <state key="normal" title="Score Reset "/>
+                                <connections>
+                                    <action selector="ClearScores" destination="rOG-8Y-mMM" eventType="touchUpInside" id="uEC-85-Sbx"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRq-K2-j2y">
                                 <rect key="frame" x="16" y="186" width="343" height="400"/>
