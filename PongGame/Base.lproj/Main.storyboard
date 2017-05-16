@@ -39,7 +39,7 @@
                                 <rect key="frame" x="145.5" y="318.5" width="84" height="30"/>
                                 <state key="normal" title="High Scores"/>
                                 <connections>
-                                    <segue destination="rOG-8Y-mMM" kind="showDetail" id="k5K-SN-Mjk"/>
+                                    <segue destination="rOG-8Y-mMM" kind="showDetail" identifier="toScore" id="k5K-SN-Mjk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgP-RS-jEZ">
@@ -217,7 +217,6 @@
         <!--Instructions View Controller-->
         <scene sceneID="8mE-g5-Pli">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="avn-lS-qsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="tXO-Ur-mkp" customClass="InstructionsViewController" customModule="PongGame" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bjo-u1-VhS"/>
@@ -236,7 +235,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOR-0N-NZd">
                                 <rect key="frame" x="26" y="145" width="323" height="512"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <mutableString key="text">Welcome to Pong!
+                                <string key="text">Welcome to Pong!
 Thera are three modes for this pong game, each will be covered below.
 
 How to Play
@@ -252,7 +251,7 @@ Same rules as 1-Player, except you can go up against a friend, each person moves
 Rapid Fire
 This is the score based system, each time you hit the ball you get points and the multiplier increases, if you miss your multiple gets reset to 0.
 Miss the ball 4 times and the game is over.
-Also, the ball moves faster every time you hit it.</mutableString>
+Also, the ball moves faster every time you hit it.</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -289,6 +288,7 @@ Also, the ball moves faster every time you hit it.</mutableString>
                         <outlet property="txtInstructions" destination="HOR-0N-NZd" id="JDL-KV-lxx"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avn-lS-qsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1736.8" y="850.52473763118451"/>
         </scene>
@@ -475,6 +475,14 @@ Also, the ball moves faster every time you hit it.</mutableString>
                                     <segue destination="0Hl-bE-0IT" kind="show" identifier="leaveGame" id="JbA-xC-ZQB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1K-q9-j4i">
+                                <rect key="frame" x="313" y="629" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="rOG-8Y-mMM" kind="show" identifier="toScore" id="X4y-dg-PeS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -485,9 +493,10 @@ Also, the ball moves faster every time you hit it.</mutableString>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cFy-Bt-xOR"/>
         <segue reference="TuX-y8-8Wc"/>
         <segue reference="JbA-xC-ZQB"/>
+        <segue reference="cFy-Bt-xOR"/>
+        <segue reference="X4y-dg-PeS"/>
         <segue reference="0Dq-Y8-ryy"/>
     </inferredMetricsTieBreakers>
 </document>

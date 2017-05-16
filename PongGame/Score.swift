@@ -11,62 +11,55 @@ import Foundation
 var _SCORES = [Score]() as Array;
 
 //Class used for storing data
-class Score
+class Score: NSObject, NSCoding
 {
     var Key = "ScoresList"
     var Score = 0
     var Name = ""
     
-    public func setScore(score : Int32, name : String)
+    public func setScore(score : Int, name : String)
     {
-        Score = Int(score)
+        Score = score
         Name = String(name)
+    }
+    
+    init(score: Int, name : String)
+    {
+        Score = score
+        Name = name
     }
     
     public func Save()
     {
         _SCORES.append(self)
         _SCORES.sort(by: {$0.Score > $1.Score})
-
-        /*
-        if(_SCORES.count > 10)
-        {
-            _SCORES.removeLast()
-        }
-        
-        //Saving to user defaults values
-        var scores : String
-        var names : String
-        var i = 0
-        
-        while (i < _SCORES.count)
-        {
-            //adding initial score value - no comma needed
-            if(i == 0)
-            {
-                scores = String(_SCORES[i].Score)
-                names = _SCORES[i].Name
-            }
-            
-            // Adding a comma to seperate values if it is not the last score
-            if(i < _SCORES.count)
-            {
-                scores = scores + ","
-                names = names + ","
-            }
-            
-            i = i + 1;
-        }*/
         
         //Saving NSuserdefaults values
         let userDefaults = UserDefaults.standard
-        userDefaults.set(_SCORES, forKey: Key)
+        
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: _SCORES)
+        userDefaults.set(encodedData, forKey: Key)
+        userDefaults.synchronize()
         
     }
     
-    public func LoadScores() -> [Score]
+    public func LoadScores()
     {
         let userDefaults = UserDefaults.standard
-        return userDefaults.value(forKey: Key) as! Array<Score>
+        
+        let decoded  = userDefaults.object(forKey: Key) as! Data
+        _SCORES = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Score]
+    }
+    
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let score = aDecoder.decodeInteger(forKey: "Score")
+        let name = aDecoder.decodeObject(forKey: "Name") as! String
+        self.init(score: score, name: name)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(Score, forKey: "Score")
+        aCoder.encode(Name, forKey: "Name")
     }
 }

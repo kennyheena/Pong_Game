@@ -74,8 +74,38 @@ class GameViewController: UIViewController {
             }
         }
         
-        //Showing message
         
+        //Showing message
+        // Message for rapid fire modee
+        if(_MODE == Mode.RapidFire)
+        {
+            let alert = UIAlertController(title: "Game Over", message: message, preferredStyle: .alert)
+            
+            //Adding text field for capturing name
+            alert.addTextField { (textField) in
+                textField.text = "Enter Name"
+            }
+            
+            //Adding action when button gets pressed
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+
+                
+                // Creating and adding score
+                let value = String(describing: alert?.textFields![0])
+                //Getting the name value from the scores
+                let score = Score(score: _SCORE, name: value);
+                score.setScore(score: _SCORE, name: value)
+                score.Save()
+                
+                self.performSegue(withIdentifier: "toScore", sender: nil);
+                
+            }))
+            
+            // 4. Present the alert.
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
         //presenting alert
         let alert = UIAlertController(title: "Game Over", message: message, preferredStyle: UIAlertControllerStyle.alert)
         
@@ -108,7 +138,7 @@ class GameViewController: UIViewController {
             }
         }))
         present(alert, animated: true, completion: nil)
-        
+        }
     }
     
     
