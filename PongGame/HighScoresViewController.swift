@@ -13,10 +13,10 @@ class HighScoresViewController : UIViewController, UITableViewDelegate, UITableV
 {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellEmpty = tableView.dequeueReusableCell(withIdentifier: "highScoreCell")
+        //var cellEmpty = tableView.dequeueReusableCell(withIdentifier: "highScoreCell")
         
         let cell = tableView.dequeueReusableCell( withIdentifier: "highScoreCell", for: indexPath as IndexPath)
-        
+        cell.textLabel?.textColor = UIColor.white
         
         let name = _SCORES[indexPath.row].Name
         let score = String(_SCORES[indexPath.row].Score)
@@ -49,7 +49,7 @@ class HighScoresViewController : UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _SCORES.count
     }
-    
+    /*
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellEmpty = tableView.dequeueReusableCell(withIdentifier: "highScoreCell")
         
@@ -64,5 +64,5 @@ class HighScoresViewController : UIViewController, UITableViewDelegate, UITableV
         cell.textLabel?.text = pos + ". " + name + " : " + score + "pts"
         
         return cell
-    }
+    }*/
 }

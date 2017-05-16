@@ -542,8 +542,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
             endingLineNumber = "56"
-            landmarkName = "tableView(tableView:cellForRowAtIndexPath:)"
-            landmarkType = "7">
+            landmarkName = "HighScoresViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
