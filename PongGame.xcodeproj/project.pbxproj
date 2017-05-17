@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B9B44371ECB07F400FB6391 /* HighScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9B44361ECB07F400FB6391 /* HighScoresViewController.swift */; };
+		2B4231291ECC6C7200AE0EF5 /* HighScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4231281ECC6C7200AE0EF5 /* HighScoresViewController.swift */; };
 		2BBACE471EB5891E00C94D1E /* DifficultySelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBACE461EB5891E00C94D1E /* DifficultySelect.swift */; };
 		2BBACE491EB5941700C94D1E /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBACE481EB5941700C94D1E /* Mode.swift */; };
 		2BBACE4B1EB595FF00C94D1E /* GameModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBACE4A1EB595FF00C94D1E /* GameModesViewController.swift */; };
@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B9B44361ECB07F400FB6391 /* HighScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresViewController.swift; sourceTree = "<group>"; };
+		2B4231281ECC6C7200AE0EF5 /* HighScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresViewController.swift; sourceTree = "<group>"; };
 		2BBACE461EB5891E00C94D1E /* DifficultySelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultySelect.swift; sourceTree = "<group>"; };
 		2BBACE481EB5941700C94D1E /* Mode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		2BBACE4A1EB595FF00C94D1E /* GameModesViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; path = GameModesViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +123,7 @@
 		B9BBDFD21E99EAA3008A4DA2 /* PongGame */ = {
 			isa = PBXGroup;
 			children = (
+				2B4231281ECC6C7200AE0EF5 /* HighScoresViewController.swift */,
 				B9BBDFD31E99EAA3008A4DA2 /* AppDelegate.swift */,
 				B9BBDFD51E99EAA3008A4DA2 /* GameScene.sks */,
 				B9BBDFD71E99EAA3008A4DA2 /* Actions.sks */,
@@ -306,6 +307,7 @@
 				B9BBDFDA1E99EAA3008A4DA2 /* GameScene.swift in Sources */,
 				2BBACE4B1EB595FF00C94D1E /* GameModesViewController.swift in Sources */,
 				B91967531EC95A09006E4F8C /* SettingsViewController.swift in Sources */,
+				2B4231291ECC6C7200AE0EF5 /* HighScoresViewController.swift in Sources */,
 				B9BBDFDC1E99EAA3008A4DA2 /* GameViewController.swift in Sources */,
 				2BBACE491EB5941700C94D1E /* Mode.swift in Sources */,
 				2BFFA4D71EC84A8E001156CA /* InstructionsViewController.swift in Sources */,
@@ -314,7 +316,6 @@
 				B9BBDFD41E99EAA3008A4DA2 /* AppDelegate.swift in Sources */,
 				2BFE3C241EC472EE005DA4CD /* Score.swift in Sources */,
 				2BBACE471EB5891E00C94D1E /* DifficultySelect.swift in Sources */,
-				2B9B44371ECB07F400FB6391 /* HighScoresViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
