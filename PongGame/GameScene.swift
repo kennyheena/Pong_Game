@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -28,6 +29,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var difficultyMultiplier = 0;
     public var velocityIncrease = 1.05
     public var playerMisses = 0
+    
+    //sound id
+    let systemSoundID: SystemSoundID = 1105
+    
+    //gamesound variable inbuid ios
+    var audioPlayer = AVAudioPlayer()
     
     func didBegin(_ contact: SKPhysicsContact) {
         if (contact.bodyA.node == paddle1 && contact.bodyB.node == ball)
@@ -97,6 +104,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
     }
     
+    // using this function to play sounds
+    func playEffectSound(filename: String)
+    {
+        run(SKAction.playSoundFileNamed("\(filename)", waitForCompletion: false))
+    }
+    
+    
     //called when the ball collides with an object
     func collisionBetween(object0: SKNode, object1: SKNode) {
         //Checking if RapidFire more is enabled
@@ -105,7 +119,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //Checking the colliding object is player 1 paddle
             if(object1 == paddle1)
             {
-
+                //adding music
+                //AudioServicesPlaySystemSound (systemSoundID)
+                playEffectSound(filename: "4391__noisecollector__pongblipf-5.wav")
+                
                 //Updating Multiplier field
                 paddle2score.text = String(multiplier) + "x"
                 
