@@ -30,22 +30,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var velocityIncrease = 1.05
     public var playerMisses = 0
     
-    //sound id
-    let systemSoundID: SystemSoundID = 1105
+    func didBegin(_ contact: SKPhysicsContact)
     
-    //gamesound variable inbuid ios
-    var audioPlayer = AVAudioPlayer()
-    
-    func didBegin(_ contact: SKPhysicsContact) {
+    {
         if (contact.bodyA.node == paddle1 && contact.bodyB.node == ball)
         {
             collisionBetween(object0: contact.bodyB.node!, object1: contact.bodyA.node!)
+            
+            do
+            {
+                //AudioServicesPlaySystemSound (systemSoundID)
+                playEffectSound(filename: "4391__noisecollector__pongblipf-5.wav")
+            }
+            
         }
         else if (contact.bodyB.node == ball && contact.bodyA.node == paddle1)
         {
             collisionBetween(object0: contact.bodyB.node!, object1: contact.bodyA.node!)
         }
     }
+    
+    
     
     override func didMove(to view: SKView) {
         
@@ -102,6 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // setting physics information for handling collision - required for RapidFireScoring mode
         physicsWorld.contactDelegate = self
         ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
+      
     }
     
     // using this function to play sounds
@@ -119,9 +125,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //Checking the colliding object is player 1 paddle
             if(object1 == paddle1)
             {
-                //adding music
-                //AudioServicesPlaySystemSound (systemSoundID)
-                playEffectSound(filename: "4391__noisecollector__pongblipf-5.wav")
                 
                 //Updating Multiplier field
                 paddle2score.text = String(multiplier) + "x"
@@ -141,6 +144,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    
     
     func inBounds(touch: UITouch, object: SKLabelNode) -> Bool
     {
@@ -334,6 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // checks win condition
             addScore(winner: paddle2);
         }
-
+        
+        
     }
 }

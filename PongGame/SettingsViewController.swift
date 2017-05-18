@@ -7,64 +7,83 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class SettingsViewController: UIViewController {
-    @IBAction func gameSounds(_ sender: UISwitch) {
-        
-        if (sender.isOn == true)
-        {
-            //code
-        }
-        else
-        {
-            //code
-        }
-    }
     
-    @IBAction func menuSounds(_ sender: Any) {
-        
-        if ((sender as AnyObject).isOn == true)
-        {
-            //code
-        }
-        else
-        {
-            //code
-        }
-    }
-    
-    @IBAction func gameMusic(_ sender: Any) {
-        
-        if ((sender as AnyObject).isOn == true)
-        {
-            //code
-        }
-        else
-        {
-            //code
-        }
-    }
+    //variable for background music play
+    var audioPlayer = AVAudioPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // address of the music file
+        let music = Bundle.main.path(forResource: "255576__moz5a__man-meets-earth", ofType: "mp3")
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music! ))
+        }
+        catch
+        {
+            print(error)
+        }
 
-        // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func gameSounds(_ sender: AnyObject)
+        
+    {
+        
+        if (sender.isOn == true)
+        {
+            //play
+            
+            
+        }
+        else
+        {
+            //pause
+            
+            
+        }
     }
-    */
+    
+    @IBAction func menuSounds(_ sender: AnyObject)
+        
+    {
+        
+        if (sender.isOn == true)
+        {
+            //play
+        }
+        else
+        {
+            //pause
+        }
+    }
 
+
+    @IBAction func gameMusic(_ sender: AnyObject)
+        
+    {
+        
+        if (sender.isOn == true)
+        {
+            //play background audio
+            audioPlayer.play()
+        }
+        else
+        {
+            //stop background audio
+            audioPlayer.stop()
+        }
+       
+    }
 }

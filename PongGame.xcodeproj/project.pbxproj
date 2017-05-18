@@ -27,6 +27,8 @@
 		B9BBDFE41E99EAA3008A4DA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9BBDFE21E99EAA3008A4DA2 /* LaunchScreen.storyboard */; };
 		B9BBDFEF1E99EAA3008A4DA2 /* PongGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BBDFEE1E99EAA3008A4DA2 /* PongGameTests.swift */; };
 		B9BBDFFA1E99EAA3008A4DA2 /* PongGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BBDFF91E99EAA3008A4DA2 /* PongGameUITests.swift */; };
+		B9D23BD41ECD44E000FC1F38 /* 255576__moz5a__man-meets-earth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9D23BD31ECD44E000FC1F38 /* 255576__moz5a__man-meets-earth.mp3 */; };
+		B9D23BD61ECD44E800FC1F38 /* 4390__noisecollector__pongblipf-4.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9D23BD51ECD44E800FC1F38 /* 4390__noisecollector__pongblipf-4.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		B9BBDFF51E99EAA3008A4DA2 /* PongGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BBDFF91E99EAA3008A4DA2 /* PongGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongGameUITests.swift; sourceTree = "<group>"; };
 		B9BBDFFB1E99EAA3008A4DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9D23BD31ECD44E000FC1F38 /* 255576__moz5a__man-meets-earth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "255576__moz5a__man-meets-earth.mp3"; path = "../../../Downloads/255576__moz5a__man-meets-earth.mp3"; sourceTree = "<group>"; };
+		B9D23BD51ECD44E800FC1F38 /* 4390__noisecollector__pongblipf-4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "4390__noisecollector__pongblipf-4.wav"; path = "../../../Downloads/4390__noisecollector__pongblipf-4.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,14 +127,16 @@
 		B9BBDFD21E99EAA3008A4DA2 /* PongGame */ = {
 			isa = PBXGroup;
 			children = (
-				2B4231281ECC6C7200AE0EF5 /* HighScoresViewController.swift */,
 				B9BBDFD31E99EAA3008A4DA2 /* AppDelegate.swift */,
 				B9BBDFD51E99EAA3008A4DA2 /* GameScene.sks */,
 				B9BBDFD71E99EAA3008A4DA2 /* Actions.sks */,
 				B9BBDFD91E99EAA3008A4DA2 /* GameScene.swift */,
+				B91967521EC95A09006E4F8C /* SettingsViewController.swift */,
 				B9BBDFDB1E99EAA3008A4DA2 /* GameViewController.swift */,
 				B9BBDFDD1E99EAA3008A4DA2 /* Main.storyboard */,
 				B9BBDFE01E99EAA3008A4DA2 /* Assets.xcassets */,
+				B9D23BD31ECD44E000FC1F38 /* 255576__moz5a__man-meets-earth.mp3 */,
+				B9D23BD51ECD44E800FC1F38 /* 4390__noisecollector__pongblipf-4.wav */,
 				B91967541EC95EA9006E4F8C /* 4391__noisecollector__pongblipf-5.wav */,
 				B9BBDFE21E99EAA3008A4DA2 /* LaunchScreen.storyboard */,
 				B9BBDFE51E99EAA3008A4DA2 /* Info.plist */,
@@ -141,7 +147,7 @@
 				2BFE3C211EC31C56005DA4CD /* Globals.swift */,
 				2BFE3C231EC472EC005DA4CD /* Score.swift */,
 				2BFFA4D61EC84A8E001156CA /* InstructionsViewController.swift */,
-				B91967521EC95A09006E4F8C /* SettingsViewController.swift */,
+				2B4231281ECC6C7200AE0EF5 /* HighScoresViewController.swift */,
 			);
 			path = PongGame;
 			sourceTree = "<group>";
@@ -278,7 +284,9 @@
 				B9BBDFD61E99EAA3008A4DA2 /* GameScene.sks in Resources */,
 				B9BBDFE11E99EAA3008A4DA2 /* Assets.xcassets in Resources */,
 				B9BBDFE41E99EAA3008A4DA2 /* LaunchScreen.storyboard in Resources */,
+				B9D23BD61ECD44E800FC1F38 /* 4390__noisecollector__pongblipf-4.wav in Resources */,
 				B91967551EC95EA9006E4F8C /* 4391__noisecollector__pongblipf-5.wav in Resources */,
+				B9D23BD41ECD44E000FC1F38 /* 255576__moz5a__man-meets-earth.mp3 in Resources */,
 				B9BBDFD81E99EAA3008A4DA2 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
