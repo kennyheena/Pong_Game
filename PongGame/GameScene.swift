@@ -48,6 +48,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             collisionBetween(object0: contact.bodyB.node!, object1: contact.bodyA.node!)
         }
+        //adding condition to play sound for player 2 paddle
+        else if (contact.bodyA.node == paddle2 || contact.bodyB.node == paddle2)
+        {
+            //AudioServicesPlaySystemSound (systemSoundID)
+            playEffectSound(filename: "4390__noisecollector__pongblipf-4.wav")
+        }
+        
     }
     
     
