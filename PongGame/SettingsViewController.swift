@@ -14,21 +14,26 @@ class SettingsViewController: UIViewController {
     
     //variable for background music play
     var audioPlayer = AVAudioPlayer()
-
+    
+    // loading sound settings
+    let soundSettings = Sounds()
+    
+    
+    //outlets
+    @IBOutlet var gameSoundsSwitch : UISwitch!
+    @IBOutlet var menuSoundsSwitch : UISwitch!
+    @IBOutlet var gameMusicSwitch : UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // address of the music file
-        let music = Bundle.main.path(forResource: "255576__moz5a__man-meets-earth", ofType: "mp3")
+        //loading offline settings for sound
+        soundSettings.load()
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music! ))
-        }
-        catch
-        {
-            print(error)
-        }
-
+        //setting switches to correct position
+        gameSoundsSwitch.isOn = _GAME_SOUNDS
+        menuSoundsSwitch.isOn = _MENU_SOUNDS
+        gameMusicSwitch.isOn = _GAME_MUSIC
     }
     
 
@@ -38,52 +43,60 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func gameSounds(_ sender: AnyObject)
-        
     {
         
         if (sender.isOn == true)
         {
             //play
-            
-            
+            _GAME_SOUNDS = true
         }
         else
         {
             //pause
-            
+            _GAME_SOUNDS = false
             
         }
+        save()
     }
     
     @IBAction func menuSounds(_ sender: AnyObject)
-        
     {
         
         if (sender.isOn == true)
         {
             //play
+            _MENU_SOUNDS = true
         }
         else
         {
             //pause
+            _MENU_SOUNDS = false
         }
+        save()
     }
 
 
     @IBAction func gameMusic(_ sender: AnyObject)
-        
     {
-        
         if (sender.isOn == true)
         {
             //play background audio
-            audioPlayer.play()
+            _GAME_MUSIC = true
+            _MUSIC.play()
         }
         else
         {
             //stop background audio
-            audioPlayer.stop()
+            _GAME_MUSIC = false
+            _MUSIC.stop()
         }
+        save()
        
+    }
+    
+    //saving sounds settings
+    func save()
+    {
+        soundSettings.saveSettings()
     }
 }

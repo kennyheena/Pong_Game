@@ -113,7 +113,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // using this function to play sounds
     func playEffectSound(filename: String)
     {
-        run(SKAction.playSoundFileNamed("\(filename)", waitForCompletion: false))
+        if(_GAME_SOUNDS)
+        {
+            run(SKAction.playSoundFileNamed("\(filename)", waitForCompletion: false))
+        }
     }
     
     

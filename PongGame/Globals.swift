@@ -19,3 +19,10 @@ var _DIFFICULTY = Difficulty.Easy
 
 // global used for tracking game over
 var _ENDGAME = false
+
+//Menu global variables
+var _MENU_SOUNDS = true
+
+var _GAME_MUSIC = true
+
+var _GAME_SOUNDS = true
