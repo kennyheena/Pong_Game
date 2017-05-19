@@ -15,6 +15,9 @@ class Sounds
 {
     // address of the music file
     let music = Bundle.main.path(forResource: "255576__moz5a__man-meets-earth", ofType: "mp3")
+    //link for the audio file that has been used in here given credit and the licence has been shown above
+    //http://www.freesound.org/people/moz5a/sounds/255576/
+    //https://creativecommons.org/publicdomain/zero/1.0/
     
     //var audioPlayer = AVAudioPlayer()
     

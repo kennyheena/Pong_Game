@@ -41,6 +41,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 //AudioServicesPlaySystemSound (systemSoundID)
                 playEffectSound(filename: "4391__noisecollector__pongblipf-5.wav")
+                //link for the audio file that has been used in here given credit and the licence has been shown above
+                //http://www.freesound.org/people/NoiseCollector/sounds/4374/
+                //https://creativecommons.org/licenses/by/3.0/
+                
             }
             
         }
@@ -53,6 +57,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             //AudioServicesPlaySystemSound (systemSoundID)
             playEffectSound(filename: "4390__noisecollector__pongblipf-4.wav")
+            //link for the audio file that has been used in here given credit and the licence has been shown above
+            //http://www.freesound.org/people/NoiseCollector/sounds/4390/
+            //https://creativecommons.org/licenses/by/3.0/
         }
         
     }
